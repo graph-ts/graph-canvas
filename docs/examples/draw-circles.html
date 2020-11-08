@@ -1,0 +1,101 @@
+---
+layout: example
+title: Drawing Circles
+---
+
+<div class="row">
+    <div class="col-12">
+        <h1>Drawing Circles</h1>
+        <p>
+            Two <code>graph-canvas</code> methods can be used to render circles on an HTML canvas element. The
+            <code>drawCircle()</code> method renders a single circle and the <code>drawCircles()</code> method renders
+            one or more circles.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Basic Circle</h2>
+    </div>
+    <div class="col-12">
+        <p>
+            Use <code>drawCircle()</code> to render a single circle by providing a rendering context, position, radius,
+            and style.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include_relative draw-circles-0.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="0" class="sq-150-150"></canvas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Functions as Parameters</h2>
+    </div>
+    <div class="col-12">
+        <p>
+            Functions can also be used as the radius and style parameters. These functions will be called with the
+            position object as the only parameter and are expected to return a number for the radius and a
+            <code>Style</code> object or array. In this example, we first create a node object that has a position and
+            a random seed value between 0 and 10. Then we create two functions that, give a node object, return a circle
+            radius and a style, respectively. The <code>drawCircle()</code> function then uses these functions to
+            generate a radius and style when it renders the node.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include_relative draw-circles-1.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="1" class="sq-150-150"></canvas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Multiple Circles</h2>
+    </div>
+    <div class="col-12">
+        <p>
+            The <code>drawCircles()</code> method can be used to render multiple circles that have the same radius
+            and style.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include_relative draw-circles-2.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="2" class="sq-150-150"></canvas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Multiple Circles With Functions as Parameters</h2>
+    </div>
+    <div class="col-12">
+        <p>
+            Just like the <code>drawCircle()</code> method, <code>drawCircles()</code> can accept functions as the
+            radius and style parameters. The <code>drawCircles()</code> method will perform better than a loop over
+            <code>drawCircle()</code> if a static style is provided and not a function, otherwise it is simply a
+            convenient way to render multiple circles.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include_relative draw-circles-3.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="3" class="sq-150-150"></canvas>
+    </div>
+</div>
+<script>(() => { {% include_relative draw-circles-0.js %} })()</script>
+<script>(() => { {% include_relative draw-circles-1.js %} })()</script>
+<script>(() => { {% include_relative draw-circles-2.js %} })()</script>
+<script>(() => { {% include_relative draw-circles-3.js %} })()</script>

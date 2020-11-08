@@ -1,0 +1,13 @@
+# Project
+examples
+src
+docs
+
+# Node
+node_modules
+
+# IDE
+.idea
+
+# Mac
+.DS_Store

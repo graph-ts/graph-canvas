@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css');
+
+@mixin sans-serif {
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1.45;
+}
+
+@mixin serif {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+}
+
+@mixin monospace {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+html {
+  font-size: 16px;
+}
+
+html, body, p, a {
+  @include sans-serif
+}
+
+h1, h2, h3, h4, h5 {
+  @include serif
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 40px;
+}
+
+h2 {
+  font-size: 1.625rem;
+  line-height: 33px;
+  margin: 32px 0 12px;
+}
+
+h3 {
+  font-size: 1.375rem;
+  line-height: 26px;
+  margin: 26px 0 12px;
+}
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 22px;
+  margin: 20px 0 12px;
+}
+
+h1, h2, h3, h4 {
+  &.hr:after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid #e5e5e5;
+  }
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  &:active, &:link, &:visited {
+    color: #0075ff;
+  }
+}
+
+code, pre {
+  @include monospace;
+}
+
+p {
+  code {
+    background-color: rgba(220, 220, 220, 0.5);
+    border-radius: 2px;
+    padding: 0 2px;
+    word-wrap: break-word;
+  }
+}
+
+@supports (font-variation-settings: normal) {
+  code, pre {
+    font-family: 'Fira Code VF', monospace;
+    font-variant-ligatures: normal;
+  }
+}
+
+.measure {
+  max-width: 30em;
+}
+
+.measure-wide {
+  max-width: 34em;
+}
+
+.measure-narrow {
+  max-width: 20em;
+}
+
+.indent {
+  text-indent: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}

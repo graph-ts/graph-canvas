@@ -1,0 +1,128 @@
+---
+layout: example
+title: Rendering Order and Shadow Target
+---
+
+<div class="row">
+    <div class="col-12">
+        <h1>Rendering Order and Shadow Target</h1>
+        <p>
+            The <code>renderOrder</code> and <code>shadowTarget</code> properties are the only two properties in
+            the <code>Style</code> interface that are not also properties of the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D"><code>CanvasRenderingContext2D</code></a>
+            interface. These properties are included to make rendering of shapes that have both stroke and fill a little
+            more straightforward. By design, shape rendering methods such as <code>drawCircle()</code> will call both the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/stroke"><code>stroke()</code></a>
+            and
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fill"><code>fill()</code></a>
+            methods of the rendering context if the <code>strokeStyle</code> and <code>fillStyle</code> properties of
+            the provided style options are defined, respectively.
+        </p>
+        <p>
+            When used together to draw a filled shape with a border, the order in which these methods are called directly
+            affects the final appearance of the shape, particularly when the border is very thick. When a canvas path
+            is stroked (i.e. the path is drawn), the stroke width is distributed evenly to either side of the path. When
+            that same path is filled, then, the fill color covers up the half of the stroke that falls within the
+            path's fill area.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="d-flex flex-column align-items-center">
+            <canvas id="00" class="sq-150-150"></canvas>
+            <pre><code class="js">{ renderOrder: 'stroke-fill' }</code></pre>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="d-flex flex-column align-items-center">
+            <canvas id="01" class="sq-150-150"></canvas>
+            <pre><code class="js">{ renderOrder: 'fill-stroke' }</code></pre>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p>
+            The render order is specified using the <code>renderOrder</code> property, where <code>'stroke-fill'</code>
+            means the path is stroked first and then filled, and <code>'fill-stroke'</code> means it is first filled and
+            then stroked. If not provided the render order defaults to <code>'stroke-fill'</code>.
+        </p>
+        <p>
+            Complicating things a bit, when a <code>shadowColor</code> is defined in the style, a shadow will be rendered
+            for both the stroke and fill operations. This can lead to some potentially unexpected results; you may
+            call a shape rendering method expecting the shape as a whole to have a shadow, but end up with an inexplicable
+            inner glow.
+        </p>
+        <p>
+            The <code>shadowTarget</code> property is used to specify if the shadow should be included with only the
+            stroke or fill. The table below shows all possible combinations of the <code>renderOrder</code> and
+            <code>shadowTarget</code> properties.
+        </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="grid cols-3">
+
+            <div></div>
+            <div class="d-flex justify-content-center"><pre><code class="js">{ renderOrder: 'stroke-fill' }</code></pre></div>
+            <div class="d-flex justify-content-center"><pre><code class="js">{ renderOrder: 'fill-stroke' }</code></pre></div>
+
+            <div class="d-flex justify-content-start align-items-center"><pre><code class="js">{
+  shadowTarget: undefined,
+  shadowColor: 'red'
+}</code></pre></div>
+            <canvas id="10" class="sq-150-150"></canvas>
+            <canvas id="11" class="sq-150-150"></canvas>
+
+            <div class="d-flex justify-content-start align-items-center"><pre><code class="js">{
+  shadowTarget: 'stroke',
+  shadowColor: 'red'
+}</code></pre></div>
+            <canvas id="20" class="sq-150-150"></canvas>
+            <canvas id="21" class="sq-150-150"></canvas>
+
+            <div class="d-flex justify-content-start align-items-center"><pre><code class="js">{
+  shadowTarget: 'fill',
+  shadowColor: 'red'
+}</code></pre></div>
+            <canvas id="30" class="sq-150-150"></canvas>
+            <canvas id="31" class="sq-150-150"></canvas>
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="row pb-4 flex-nowrap">-->
+<!--    <div class="col"></div>-->
+<!--    <div class="col d-flex justify-content-center"><pre><code class="js">{ renderOrder: 'stroke-fill' }</code></pre></div>-->
+<!--    <div class="col d-flex justify-content-center"><pre><code class="js">{ renderOrder: 'fill-stroke' }</code></pre></div>-->
+<!--</div>-->
+<!--<div class="row pb-4 flex-nowrap">-->
+<!--    <div class="col d-flex justify-content-center align-items-center"><pre><code class="js">{-->
+<!--  shadowTarget: undefined,-->
+<!--  shadowColor: 'red'-->
+<!--}</code></pre></div>-->
+<!--    <div class="col"><canvas id="10"></canvas></div>-->
+<!--    <div class="col"><canvas id="11"></canvas></div>-->
+<!--</div>-->
+<div class="row pb-4 flex-nowrap">
+
+</div>
+<div class="row pb-4 flex-nowrap">
+
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h1>Code</h1>
+    </div>
+    <div class="col-12">
+        <pre><code class="js">{% include_relative rendering-order.js %}</code></pre>
+    </div>
+</div>
+<script src="{{ '/examples/rendering-order.js' }}"></script>

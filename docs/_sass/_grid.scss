@@ -1,0 +1,14 @@
+.grid {
+
+  display: grid;
+
+  &.cols-3 {
+    grid-template-columns: auto auto auto;
+  }
+
+  canvas {
+    align-self: center;
+    justify-self: center;
+  }
+
+}

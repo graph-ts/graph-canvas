@@ -1,0 +1,14 @@
+canvas {
+
+  object-fit: scale-down;
+
+  &.mh-350 {
+    max-height: 350px;
+  }
+
+  &.sq-150-150 {
+    width: 150px;
+    height: 150px;
+  }
+
+}

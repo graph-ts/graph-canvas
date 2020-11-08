@@ -1,0 +1,35 @@
+.header {
+
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+
+  .section {
+
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    .normal {
+      font-weight: 600;
+    }
+
+    .large {
+      @include serif;
+      font-weight: 700;
+      font-size: 1.625rem;
+    }
+
+    .padded {
+      padding: 0 0.5em;
+    }
+
+    .button {
+      color: black;
+      &:hover {
+        color: #0075ff;
+      }
+    }
+
+  }
+}

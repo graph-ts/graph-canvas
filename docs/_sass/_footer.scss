@@ -1,0 +1,29 @@
+.footer {
+
+  display: flex;
+  justify-content: space-between;
+  margin: 4em 0 1em;
+
+  .section {
+
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .button {
+      color: black;
+      font-weight: 600;
+      padding: 0 0.5em;
+      &:hover {
+        color: #0075ff;
+      }
+    }
+
+  }
+
+}
