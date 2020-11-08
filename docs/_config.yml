@@ -2,6 +2,7 @@ title: graph-canvas
 author: Tristan Dyer
 email: atristandyer@gmail.com
 github_username: atdyer
+baseurl: /graph-canvas
 repository: https://github.com/graph-ts/graph-canvas
 sass:
   sass_dir: _sass
