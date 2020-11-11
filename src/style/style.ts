@@ -44,16 +44,43 @@ export interface Style {
     textBaseline?: TextBaseline
 }
 
+const DEFAULTS: Style = {
+    direction: 'inherit',
+    fillStyle: '#000',
+    filter: 'none',
+    font: '10px sans-serif',
+    globalAlpha: 1.0,
+    globalCompositeOperation: 'source-over',
+    imageSmoothingEnabled: true,
+    imageSmoothingQuality: 'low',
+    lineCap: 'butt',
+    lineDashOffset: 0.0,
+    lineJoin: 'miter',
+    lineWidth: 1.0,
+    miterLimit: 10.0,
+    shadowBlur: 0,
+    shadowColor: 'rgb(0 0 0 / 0%)',
+    shadowOffsetX: 0,
+    shadowOffsetY: 0,
+    strokeStyle: '#000',
+    textAlign: 'start',
+    textBaseline: 'alphabetic'
+}
+
 /**
- *
- * @param style
- * @param prop
+ * Given an array of style, returns the final value that will be applied for a single property
+ * if the styles were applied in order. Optionally will return the default value if no value is
+ * supplied by any of the Style objects in the array.
+ * @param style a Style array
+ * @param prop the property to retrieve
+ * @param returnDefault whether or not to return the default value if none is present in any Style
  */
-export function getStyleProperty<R extends keyof Style> (style: Style[], prop: R): Style[R] | undefined {
+export function getStyleProperty<R extends keyof Style> (style: Style[], prop: R, returnDefault?: boolean): Style[R] | undefined {
     for (let i = style.length-1; i >= 0; --i) {
         const value = style[i][prop];
         if (isPresent(value)) return value;
     }
+    if (returnDefault) return DEFAULTS[prop];
     return undefined;
 }
 

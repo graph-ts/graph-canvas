@@ -22,6 +22,7 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "@graph-ts/graph-lib": "latest"
+    "@graph-ts/graph-lib": "latest",
+    "@graph-ts/vector2": "latest"
   }
 }

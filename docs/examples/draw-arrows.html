@@ -1,0 +1,28 @@
+---
+layout: example
+title: Drawing Arrows
+---
+
+<div class="row">
+    <div class="col-12">
+        <h1>Drawing Arrows</h1>
+        <p>
+            This is how to draw arrows.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include examples/draw-arrows-0.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="0" class="sq-150-150"></canvas>
+    </div>
+</div>
+
+<script>(
+    () => {
+        {% include examples/draw-arrows-0.js %}
+    })()
+</script>
