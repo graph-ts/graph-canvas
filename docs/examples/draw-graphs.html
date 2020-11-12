@@ -1,0 +1,33 @@
+---
+layout: example
+title: Drawing Graphs
+---
+
+<div class="row">
+    <div class="col-12">
+        <h1>Drawing Graphs and Graph Components</h1>
+        <p>
+            This is how to draw graphs and various parts of graphs.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h2>Graph Nodes</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <pre><code class="js">{% include examples/draw-graphs-0.js %}</code></pre>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <canvas id="0"></canvas>
+    </div>
+</div>
+
+<script>{% include examples/draw-graphs-common.js %}</script>
+<script>
+    (() => {
+        {% include examples/draw-graphs-0.js %}
+    })();
+</script>
